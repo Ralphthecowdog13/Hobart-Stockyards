@@ -6,17 +6,8 @@ const authenticateToken = require('../middleware/authenticate');
 router.post('/intake', authenticateToken, async (req, res) => {
   try {
     const {
-      ownerName,
-      tagNumber,
-      breed,
-      sex,
-      weanLength,
-      vaccinations,
-      pregnancyStatus,
-      complianceFormA,
-      notes,
-      penNumber,
-      headCount
+      ownerName, tagNumber, breed, sex, weanLength, vaccinations,
+      pregnancyStatus, complianceFormA, notes, penNumber, headCount
     } = req.body;
 
     const existing = await Intake.findOne({ penNumber });
@@ -25,17 +16,9 @@ router.post('/intake', authenticateToken, async (req, res) => {
     }
 
     const intake = new Intake({
-      ownerName,
-      tagNumber,
-      breed,
-      sex,
-      weanLength,
-      vaccinations,
-      pregnancyStatus,
-      complianceFormA,
-      notes,
-      penNumber,
-      headCount
+      ownerName, tagNumber, breed, sex, weanLength,
+      vaccinations, pregnancyStatus, complianceFormA,
+      notes, penNumber, headCount
     });
 
     await intake.save();
